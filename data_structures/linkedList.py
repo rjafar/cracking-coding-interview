@@ -19,6 +19,7 @@ class LinkedList:
             curr.next = newNode
         else:
             self.head = newNode
+        return newNode
 
     def remove(self, data):
         curr = self.head
@@ -54,7 +55,10 @@ class LinkedList:
             print(curr.data)
             curr = curr.next
 
-    # function that returns the linked list with duplicates removed
+    # Description: function that returns the linked list with duplicates removed
+    # Input: lniked list
+    # Output: linked list with duplicates removed
+    # Time Complexity: O(n)
     def removeDups(self):
         m = {}
         prev = None
@@ -69,7 +73,10 @@ class LinkedList:
                 curr = curr.next
         return self
 
-    # function that returns kth to last element in the linked list
+    # Description: function that returns kth to last element in the linked list
+    # Input: linked list, int k
+    # Output: kth element
+    # Time Complexity: O(k)
     def kthToLast(self,k):
         n = self.size()
         if k >= 0 | k > n: return None
@@ -79,5 +86,17 @@ class LinkedList:
             temp = curr.data
             curr = curr.next
         return temp
+
+
+    # Description: function that removes middle node given access to only that node
+    # Input: linked list, node x
+    # Output: linked list with node x removed
+    # Time Complexity: O(1)
+    def delMidNode(self, x):
+        if not x: return # if last element or x is null
+        x.data = x.next.data # copy next's data
+        x.next = x.next.next # delete next
+        return self
+
  
 

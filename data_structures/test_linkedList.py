@@ -59,3 +59,19 @@ def test_kthToLast():
     assert 4 == LL.kthToLast(1)
     assert 1 == LL.kthToLast(4)
     assert None == LL.kthToLast(5)
+
+# tests for delMidNode
+def test_delMidNode():
+    LL = LinkedList()
+    LL.insert(1)
+    Node2 = LL.insert(2)
+    Node3 = LL.insert(3)
+    LL.insert(4)
+
+    LL2 = LinkedList()
+    LL2.insert(1)
+    LL2.insert(2)
+    LL2.insert(4)
+    assert print(LL2) == print(LL.delMidNode(Node3))
+    LL2.remove(2)
+    assert print(LL2) == print(LL.delMidNode(Node2))
