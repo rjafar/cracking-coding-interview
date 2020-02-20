@@ -54,5 +54,30 @@ class LinkedList:
             print(curr.data)
             curr = curr.next
 
+    # function that returns the linked list with duplicates removed
+    def removeDups(self):
+        m = {}
+        prev = None
+        curr = self.head
+        while(curr):
+            if curr.data not in m:
+                m[curr.data] = 1
+                prev = curr
+                curr = curr.next
+            else:
+                prev.next = curr.next
+                curr = curr.next
+        return self
 
+    # function that returns kth to last element in the linked list
+    def kthToLast(self,k):
+        n = self.size()
+        if k >= 0 | k > n: return None
+        kth = n - k
+        curr = self.head
+        for i in range(kth+1):
+            temp = curr.data
+            curr = curr.next
+        return temp
+ 
 
