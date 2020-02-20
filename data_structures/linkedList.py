@@ -87,7 +87,6 @@ class LinkedList:
             curr = curr.next
         return temp
 
-
     # Description: function that removes middle node given access to only that node
     # Input: linked list, node x
     # Output: linked list with node x removed
@@ -97,6 +96,25 @@ class LinkedList:
         x.data = x.next.data # copy next's data
         x.next = x.next.next # delete next
         return self
-
  
+    # Description: function that partitions a linked list based on value x
+    # Input: linked list, int x
+    # Output: linked list with nodes < x on the left and nodes >= x on the left
+    # Time Complexity: O(n)
+    def partitionLL(self, x):
+        firstHalf = LinkedList() # create 2 partition LLs
+        lastHalf = LinkedList()
+        curr = self.head # get head of LL
+        while(curr):
+            if curr.data < x: # seperate into smaller or larger partition LL
+                firstHalf.insert(curr)
+            else:
+                lastHalf.insert(curr)
+            curr = curr.next
+        first = firstHalf.head # get heads of both parition LLs
+        last = lastHalf.head
+        while (first.next): # get to end of firstHalf LL
+            first = first.next
+        first.next = last # join 2 partition LLs together
+        return firstHalf # return joined LL
 

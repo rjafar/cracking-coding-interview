@@ -75,3 +75,22 @@ def test_delMidNode():
     assert print(LL2) == print(LL.delMidNode(Node3))
     LL2.remove(2)
     assert print(LL2) == print(LL.delMidNode(Node2))
+
+# test partitionLL
+def test_partitionLL():
+    LL = LinkedList()
+    LL.insert(10)
+    LL.insert(1)
+    LL.insert(2)
+    LL.insert(3)
+    LL.insert(2)
+    LL.insert(3)
+
+    LL2 = LinkedList()
+    LL2.insert(1)
+    LL2.insert(2)
+    LL2.insert(2)
+    LL2.insert(10)
+    LL2.insert(3)
+    LL2.insert(3)
+    assert print(LL2) == print(LL.partitionLL(3))
