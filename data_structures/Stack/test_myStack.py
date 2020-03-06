@@ -42,3 +42,17 @@ def test_peek():
     assert 3 == s.peek()
     s.pop()
     assert 2 == s.peek()
+
+def test_sort():
+    s = MyStack()
+    s.push(2)
+    s.push(3)
+    s.push(1)
+    s.push(10)
+    s.push(5)
+    s.sort()
+    assert 10 == s.pop()
+    assert 5 == s.pop()
+    assert 3 == s.pop()
+    assert 2 == s.pop()
+    assert 1 == s.pop()
