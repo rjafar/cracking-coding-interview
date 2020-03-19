@@ -30,5 +30,14 @@ class Graph:
                     queue.append(neighbor)
         return visited
 
+    # Algorithm to find if a path exists between 2 nodes
+    def findRoute(self, start, end):
+        if start == end: return True
+        result = self.BFS(start)
+        if end in result:
+            return True
+        else: 
+            return False
+
     def printGraph(self):
         return self.graph

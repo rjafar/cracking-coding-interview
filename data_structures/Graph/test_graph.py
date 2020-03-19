@@ -62,3 +62,8 @@ def test_BFS3():
     result = graph.BFS(5)
     assert result == [5]
     
+def test_findRoute():
+    assert graph.findRoute(0,2) == True
+    assert graph.findRoute(2,5) == False
+    assert graph.findRoute(1,4) == True
+    assert graph.findRoute(5,0) == False
