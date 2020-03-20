@@ -97,4 +97,25 @@ class Node:
             root.right = self.remove(root.right, temp.data) # remove
         return root
 
+    # Algorithm that creates a linked list of all nodes at each depth given a binary tree
+    def listOfDepths(self, root):
+        lists = []
+        self.addLists(self, root, lists, 0)
+        return lists
+
+    def addLists(self, root, lists, level):
+        if root is None: return
+
+        if len(lists) == level:
+            newList = []
+            lists.append(newList)
+        else:
+            newList = lists[level]
+
+        newList.append(root)
+        level += 1
+
+        self.addLists(self, root.left, lists, level)
+        self.addLists(self, root.right, lists, level)
+
 

@@ -69,3 +69,18 @@ def test_minBST():
     assert root.right.left.data == 5
     assert root.right.right.data == 7
 
+def test_listOfDepths():
+    root = Node(1)
+    root.left = Node(2)
+    root.left.left = Node(4)
+    root.right = Node(3)
+    root.right.left = Node(5)
+    root.right.right = Node(6)
+
+    result = Node.listOfDepths(Node, root)
+    assert result[0][0].data == 1
+    assert result[1][0].data == 2
+    assert result[1][1].data == 3
+    assert result[2][0].data == 4
+    assert result[2][1].data == 5
+    assert result[2][2].data == 6
