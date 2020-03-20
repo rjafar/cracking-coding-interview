@@ -58,3 +58,14 @@ def test_remove_two_child():
     assert root.right.left == None
     assert root.right.right.data == 10
 
+def test_minBST():
+    array = [1,2,3,4,5,6,7]
+    result = Node.createMinBST(Node, array)
+    assert root.data == 4
+    assert root.left.data == 2
+    assert root.left.left.data == 1
+    assert root.left.right.data == 3
+    assert root.right.data == 6
+    assert root.right.left.data == 5
+    assert root.right.right.data == 7
+

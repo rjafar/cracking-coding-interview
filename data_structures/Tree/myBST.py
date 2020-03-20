@@ -1,3 +1,5 @@
+from math import floor
+
 # Implementation of a Binary Search Tree
 
 class Node:
@@ -5,6 +7,26 @@ class Node:
         self.data = data
         self.left = None
         self.right = None
+
+    # algorithm to create a BST with minimal height given a sorted array
+    def createMinBST(self, array):
+        if len(array) > 1:
+            midIdx = floor(len(array)/2)
+            print(array[midIdx])
+            root = Node(array[midIdx])
+
+            firstHalf = array[0 : midIdx]
+            print(firstHalf)
+            lastHalf = array[midIdx+1 : len(array)]
+            print(lastHalf)
+
+            root.left = self.createMinBST(self, firstHalf)
+            root.right = self.createMinBST(self, lastHalf)
+
+            return root
+        else:
+            return Node(array[0])
+
 
     # insert a node in the tree
     def insert(self, root, node):
