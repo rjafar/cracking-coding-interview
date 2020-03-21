@@ -161,9 +161,7 @@ class Node:
                 temp = temp.left
             return temp
 
-        if node.right == None:
-            print(node.data)
-            print(node.parent.data)
+        else:
             if node.parent.data > node.data: # go up one level
                 return node.parent
             else:
