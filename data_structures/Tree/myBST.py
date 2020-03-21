@@ -118,4 +118,20 @@ class Node:
         self.addLists(self, root.left, lists, level)
         self.addLists(self, root.right, lists, level)
 
+    # Algorithm to check whether a tree is balanced
+    def isBalanced(self, root):
+        if root is None: return True
+
+        heightDiff = self.getHeight(self,root.left) - self.getHeight(self,root.right)
+
+        if heightDiff > 1:
+            return False
+        else:
+            return self.isBalanced(self,root.left) and self.isBalanced(self,root.right)
+
+    def getHeight(self, root):
+        if root is None: return -1
+
+        return max(self.getHeight(self,root.left), self.getHeight(self,root.right)) + 1
+
 

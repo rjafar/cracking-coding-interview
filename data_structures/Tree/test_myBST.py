@@ -84,3 +84,20 @@ def test_listOfDepths():
     assert result[2][0].data == 4
     assert result[2][1].data == 5
     assert result[2][2].data == 6
+
+def test_isBalanced():
+    root = Node(1)
+    root.left = Node(2)
+    root.right = Node(3)
+    result = Node.isBalanced(Node, root)
+    assert result == True
+    root.left.left = Node(4)
+    root.left.left.left = Node(5)
+    result = Node.isBalanced(Node, root)
+    assert result == False
+    root.left.right = Node(6)
+    result = Node.isBalanced(Node, root)
+    assert result == False
+    root.right.right = Node(7)
+    result = Node.isBalanced(Node, root)
+    assert result == True
