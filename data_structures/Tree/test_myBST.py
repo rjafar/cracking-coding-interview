@@ -101,3 +101,14 @@ def test_isBalanced():
     root.right.right = Node(7)
     result = Node.isBalanced(Node, root)
     assert result == True
+
+def test_validBST():
+    root = Node(10)
+    root.left = Node(5)
+    root.left.right = Node(15)
+    root.right = Node(20)
+    result = Node.isValidBST(Node, root)
+    assert result == False
+    root.left.right = Node(7)
+    result = Node.isValidBST(Node, root)
+    assert result == True

@@ -134,4 +134,17 @@ class Node:
 
         return max(self.getHeight(self,root.left), self.getHeight(self,root.right)) + 1
 
+    # Check if a binary tree is a valid BST
+    def isValidBST(self, root):
+        return self.isBST(self,root,None,None)
 
+    def isBST(self, root, min, max):
+        if root is None: return True
+
+        if (min != None and root.data<min) or (max != None and root.data>max):
+            return False
+
+        if (not self.isBST(self, root.left, min, root.data)) or (not self.isBST(self, root.right, root.data, max)):
+            return False
+
+        return True
