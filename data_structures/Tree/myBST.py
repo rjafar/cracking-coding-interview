@@ -170,5 +170,33 @@ class Node:
                 else:
                     return node # highest possible in tree
 
+    # Algo to find first common ancestor in a binary tree given 2 nodes
+    def findCommonAncestor(self, n1, n2):
+        heightDiff = self.getDepth(self,n1) - self.getDepth(self,n2) # get heights of each node and get height diff
+        first = n1 if heightDiff <= 0 else n2 # set which is higher as first
+        second = n1 if heightDiff > 0 else n2 # lower
+        second = self.goUp(self, second, abs(heightDiff)) # go up a level from the second until on same level as first
+
+        while (first!=second and first!=None and second!=None): # keep going up on both sides until found match
+            first = first.parent
+            second = second.parent
+        if first == None or second == None: # no match
+            return None
+        else:
+            return first # match
+
+    def getDepth(self, node):
+        height = 0
+        while (node.parent != None):
+            node = node.parent
+            height += 1
+        return height
+
+    def goUp(self, node, diff):
+        while (diff > 0 and node != None):
+            node = node.parent
+            diff -= 1
+        return node
+
         
 

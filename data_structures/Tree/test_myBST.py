@@ -133,3 +133,22 @@ def test_successor():
     assert result.data == 7
     result = Node.findSuccessor(Node, root.right.right) # 15
     assert result.data == 15
+
+def test_ancestor():
+    root = Node(10)
+    root.left = Node(20)
+    root.left.parent = root
+    root.right = Node(7)
+    root.right.parent = root
+    root.left.left = Node(5)
+    root.left.left.parent = root.left
+    root.left.right = Node(15)
+    root.left.right.parent = root.left
+    result = Node.findCommonAncestor(Node, root.left.left, root.right)
+    assert result.data == 10
+    result = Node.findCommonAncestor(Node, root, root.left.left)
+    assert result.data == 10
+    result = Node.findCommonAncestor(Node, root.left.left, root.left.right)
+    assert result.data == 20
+    result = Node.findCommonAncestor(Node, root.right, root.right)
+    assert result.data == 7
