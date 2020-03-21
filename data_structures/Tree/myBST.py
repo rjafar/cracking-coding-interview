@@ -7,6 +7,7 @@ class Node:
         self.data = data
         self.left = None
         self.right = None
+        self.parent = None
 
     # algorithm to create a BST with minimal height given a sorted array
     def createMinBST(self, array):
@@ -147,4 +148,29 @@ class Node:
         if (not self.isBST(self, root.left, min, root.data)) or (not self.isBST(self, root.right, root.data, max)):
             return False
 
-        return True
+        return True 
+
+    # Algo to find next in-order successor of any given node in a BST
+    def findSuccessor(self, node):
+        if node == None:
+            return None
+        
+        if node.right != None: # if right subtree is not null, find leftmost node
+            temp = node.right
+            while (temp.left):
+                temp = temp.left
+            return temp
+
+        if node.right == None:
+            print(node.data)
+            print(node.parent.data)
+            if node.parent.data > node.data: # go up one level
+                return node.parent
+            else:
+                if node.parent.parent.data > node.data: # go up two levels
+                    return node.parent.parent
+                else:
+                    return node # highest possible in tree
+
+        
+

@@ -112,3 +112,24 @@ def test_validBST():
     root.left.right = Node(7)
     result = Node.isValidBST(Node, root)
     assert result == True
+
+def test_successor():
+    root = Node(5)
+    root.left = Node(3)
+    root.left.parent = root
+    root.right = Node(10)
+    root.right.parent = root
+    root.left.right = Node(4)
+    root.left.right.parent = root.left
+    root.right.left = Node(7)
+    root.right.left.parent = root.right
+    root.right.right = Node(15)
+    root.right.right.parent = root.right
+    result = Node.findSuccessor(Node, root.left.right) # 4
+    assert result.data == 5
+    result = Node.findSuccessor(Node, root.left) # 3
+    assert result.data == 4
+    result = Node.findSuccessor(Node, root) # 5
+    assert result.data == 7
+    result = Node.findSuccessor(Node, root.right.right) # 15
+    assert result.data == 15
